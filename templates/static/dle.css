@@ -1,14 +1,71 @@
-.information {
-  /* background-color: white; */
-  padding: auto;
+.informationblock {
+  padding: 20px;
+  background-color: white;
+  margin-top: 10px;
+}
+
+.informationtext {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.application {
+  display: flex;
+  padding: 20px;
+  background-color: white;
+  margin-top: 10px;
 }
 
 .form {
   /* background-color: white; */
-  padding: auto;
+  background-color: white;
+  padding: 20px;
 }
 
 .result {
   /* background-color: black; */
-  padding: auto;
+  background-color: white;
+  padding: 20px;
+  margin-left: 10px;
+  flex-direction: column;
+}
+
+.SentenceID {
+  /* width: 10px; */
+  float:left;
+  /* height:100px; */
+  background:gray;
+  margin:10px
+}
+
+.SentenceText {
+  /* width: 100px; */
+  float:left;
+  /* height:100px; */
+  background:gray;
+  margin:10px
+}
+
+.HighLevel {
+  /* width: 100px; */
+  float:left;
+  /* height:100px; */
+  background:gray;
+  margin:10px
+}
+
+.Condition {
+  /* width: 150px; */
+  float:left;
+  /* height:100px; */
+  background:gray;
+  margin:10px
+}
+
+.Consequence {
+  /* width: 150px; */
+  float:left;
+  /* height:100px; */
+  background:gray;
+  margin:10px
 }

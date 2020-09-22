@@ -5,61 +5,108 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'dle.css' %}"/>
 
-<dev class="information" style="background-color: white; padding: auto;">
-  <h1>Decision Logic Exulactor</h1>
-  <p>This page contains the result of the algorithm I wrote for my thesis to acquire my Master in Artificial Intelligence. In the box below, give in a sentence or paragraph. If it contains a certain condition and conclusion, it will exulact the desired information.</p>
-</dev>
+<div class="informationblock">
+  <div class="informationtext">
+    <h1>Decision Logic Exulactor</h1>
+    <p>This page contains the result of the algorithm I wrote for my thesis to acquire my Master in Artificial Intelligence. In the box below, give in a sentence or paragraph. If it contains a certain condition and conclusion, it will extract the desired information. An example as well as some remarks can be found at the bottom of this page.</p>
+  </div>
+</div>
 
-<dev class="form">
-  <form action="" method="POST">
-    {% csrf_token %}
-    {{input_objects.as_p}}
-    <input type="submit" value="Process"/>
-  </form>
-</dev>
+<div class="application">
+  <div class="form">
+    <h1>Input</h1>
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{input_objects.as_p}}
+        <input type="submit" value="Process"/>
+      </form>
+  </div>
 
-<dev class="result">
-  <!-- <p>{{detail_level}}</p>
-  <p>{{sentences_info}}</p> -->
-  {% if display_outputs %}
-    {% if detail_level == 'high' %}
+  <div class="result">
+    <h1>Output</h1>
+    {% if display_outputs %}
+      {% if detail_level == 'high' %}
 
-    {% for element in sentences_info %}
-         <ul>
-           <li>{{ element.0 }}</li>
-           <li>{{ element.1 }}</li>
-           <li>{{ element.2 }}</li>
-           <li>{{ element.3 }}</li>
-         </ul>
-     {% endfor %}
+      {% for element in sentences_info %}
 
-    {% elif detail_level == 'low' %}
-    {% for element in sentences_info %}
-         <ul>
-           <li>{{ element.0 }}</li>
-           <li>{{ element.1 }}</li>
-           <li>{{ element.4 }}</li>
-           <li>{{ element.5 }}</li>
-           <li>{{ element.6 }}</li>
-         </ul>
-     {% endfor %}
-    {% elif detail_level == 'both' %}
-    {% for element in sentences_info %}
-         <ul>
-           <li>{{ element.0 }}</li>
-           <li>{{ element.1 }}</li>
-           <li>{{ element.2 }}</li>
-           <li>{{ element.3 }}</li>
-           <li>{{ element.4 }}</li>
-           <li>{{ element.5 }}</li>
-           <li>{{ element.6 }}</li>
-         </ul>
-     {% endfor %}
-    {% else %}
-      Do nothing
+        <!-- <div class="SentenceID">
+          {{ element.0 }}
+        </div>
+
+        <div class="SentenceText">
+          {{ element.1 }}
+        </div> -->
+
+        <div class="Condition">
+          <h4>Condition</h4>
+          {{ element.2 }}
+        </div>
+
+        <div class="Consequence">
+          <h4>Consequence</h4>
+          {{ element.3 }}
+        </div>
+
+       {% endfor %}
+
+      {% elif detail_level == 'low' %}
+      {% for element in sentences_info %}
+           <ul>
+             <li>{{ element.0 }}</li>
+             <li>{{ element.1 }}</li>
+             <li>{{ element.4 }}</li>
+             <li>{{ element.5 }}</li>
+             <li>{{ element.6 }}</li>
+           </ul>
+       {% endfor %}
+      {% elif detail_level == 'both' %}
+      {% for element in sentences_info %}
+           <ul>
+             <li>{{ element.0 }}</li>
+             <li>{{ element.1 }}</li>
+             <li>{{ element.2 }}</li>
+             <li>{{ element.3 }}</li>
+             <li>{{ element.4 }}</li>
+             <li>{{ element.5 }}</li>
+             <li>{{ element.6 }}</li>
+           </ul>
+       {% endfor %}
+
+      {% else %}
+        Do nothing
+      {% endif %}
     {% endif %}
-  {% endif %}
 
-</dev>
+  </div>
+</div>
+
+<div class="informationblock">
+  <div class="informationtext">
+    <h2>Example</h2>
+      <p>I'm interested in inspecting the following paragraph: <br><br>
+        Whenever it's Monday, and the weather is rainy, vegetable sandwiches are to be made. On the other hand, if it's Monday and the weather appears to be sunny, then cheese sandwiches need to be made.
+      </p>
+      <p>If I choose for only the high level view, the information retriever will give me something like this:</p>
+      <ul>
+        <li>Sentence 1</li>
+        <ul>
+          <li><b>Condition:</b> Whenever it's Monday and the weather is rainy</li>
+          <li><b>Consequence:</b> vegetable sandwiches are to be made</li>
+        </ul>
+        <br>
+        <li>Sentence 2</li>
+        <ul>
+          <li><b>Condition:</b> If it's Monday and the weather appears to be sunny</li>
+          <li><b>Consequence:</b> cheese sandwiches need to be made.</li>
+        </ul>
+      </ul>
+  <h2>Remarks</h2>
+    <ul>
+      <li>Use correct grammar and vocabulary in order not to confuse the AI.</li>
+      <li>The decision logic extractor can only extract decision logic if there is a clear condition and consequence present.</li>
+    </ul>
+  </div>
+</div>
+
 
 {% endblock %}
