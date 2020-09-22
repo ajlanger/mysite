@@ -30,3 +30,17 @@
   /* width: 100%; */
   /* padding: 20px; */
 }
+
+.contactformblock {
+  width: auto;
+  padding: auto;
+  margin: auto;
+  background-color: white;
+}
+
+.contactformtext {
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+  padding-left: 270px;
+}

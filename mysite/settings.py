@@ -28,6 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.0.190', '192.168.0.157']
 
+# EMAIL SETTINGS
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mysiteal123@gmail.com'
+# My personal pass: bq^yz7LU4%L4Ze!VQf21S095$TCi6yRsQc$WqTRKc%N&6yTJF*JsPpn2wp
+EMAIL_HOST_PASSWORD = 'adminpass123@'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
 
 # Application definition
 
