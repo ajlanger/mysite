@@ -1,0 +1,42 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}"/>
+
+<!doctype html>
+<html>
+<head>
+  <title>Arnaud Langeraert</title>
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+
+<div id="container">
+  <div class="headernav">
+
+    <!-- Header -->
+    <div class="header">
+      <h1 style="color: white; margin:auto;"><a href="" style="text-decoration: none; color: white;">Arnaud Langeraert</a></h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+      <a href="#">Crypto bot</a>
+      <a href="#">A* algorithm</a>
+      <a href="#">Questions/votes</a>
+      <a href="#">Decision logic extractor</a>
+    </div>
+  </div>
+
+  {% block content %}
+  replace me
+  {% endblock %}
+
+  <!-- Footer -->
+  <div class="footer">
+    <a href="https://www.linkedin.com/in/arnaudlangeraert/"><img style="display: inline; margin: 0 5px;" title="Linkedin Link" src="static/images/linkedinlogo.png" alt="" width="20" height="20" /></a>
+  </div>
+</div>
+
+  </body>
+
+</html>

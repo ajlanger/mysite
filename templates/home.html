@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}"/>
+
+<!-- the flexible grid (content) -->
+<div class="row">
+
+  <div class="side">
+
+    <div class="myself">
+      <img title="Moi" src="static/images/My_Pic.png" alt="" width="222.22" height="277.78" />
+    </div>
+  </div>
+
+  <div class="main">
+
+    <h2>Welcome!</h2>
+    <p>You found my personal website. Here I showcase some of the Python projects I worked on. In fact, this very site was made using Django, which is a Python library to create API's and other applications.</p>
+
+    <hr noshade width=150px>
+    <h3>Diplomas</h3>
+      <p>Until now, I mostly led a student life. I acquired following three diplomas over a period of 5 years:</p>
+
+      <ul>
+        <li>Bachelor of Science in Business Administration (University Ghent)</li>
+        <li>Master of Sciene in Business Administration | Major in Management and IT (University Ghent)</li>
+        <li>Master in Artificial Intelligence (University of Leuven)</li>
+      </ul>
+
+    <hr noshade width=150px >
+    <h3>Theses and university projects</h3>
+      <p>I wrote two theses:</p>
+      <ul>
+        <li><b>A case study research for the link between AI risks and risk-reducing measures in business.</b></li>
+          <ul>
+            <li>A case study research where I explored current methodologies regarding responsibility towards AI development. The most relevant contributions of this research was the strengthening of an existing framework and insights into how business thought about responsible Artificial Intelligence.</li>
+          </ul>
+        <li><b>A rule-based information retrieval method to extract decision logic from unstructured text.</b></li>
+          <ul>
+            <li>I developped an information retrieval system with various algorithms to extract decision logic from text. It can be used in an application to construct decision tables, which are a typical part in the field of Decision Modeling and Notation.</li>
+          </ul>
+      </ul>
+
+  <p>My resume and summary about past experiences can be found <a href="CV-html.html" target="_blank">here</a>.</p>
+
+
+  </div>
+</div>
+
+
+{% endblock %}

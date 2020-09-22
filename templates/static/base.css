@@ -1,0 +1,77 @@
+.header {
+  flex: 25%;
+  text-align: center;
+  height: 50px;
+  background-color: #333;
+}
+
+body {
+  font-family: system-ui;
+  margin: 0;
+  /* background-color: #0EDC24; */
+  padding: 0;
+  /* background-image: url('images/background2.jpg'); */
+  /* background-attachment: fixed; */
+  /* background-size: auto; */
+  /* background-repeat: no-repeat; */
+  background-color: #EAEAEA;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Footer */
+.footer {
+  padding:5px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row, .navbar {
+    flex-direction: column;
+  }
+}
+
+/* Navbar */
+
+.navbar {
+  flex: 60%;
+  display: flex;
+  background-color: #333;
+  height: 50px;
+}
+
+.navbar a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin: auto;
+  transition: transform 0.5s;
+}
+
+.navbar a:hover {
+  transform: translate(5px, -5px);
+}
+
+/**/
+
+#container {
+  width:1000px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+/**/
+
+.headernav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: #56895B;
+  border-radius: 10px;
+}
