@@ -36,6 +36,11 @@
   /* margin: 40px; */
 }
 
+.main-text {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 /* Side bar/Left column*/
 .side {
   padding: 10px;
