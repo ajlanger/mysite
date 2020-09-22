@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'dle.css' %}"/>
+
+<dev class="information" style="background-color: white; padding: auto;">
+  <h1>Decision Logic Exulactor</h1>
+  <p>This page contains the result of the algorithm I wrote for my thesis to acquire my Master in Artificial Intelligence. In the box below, give in a sentence or paragraph. If it contains a certain condition and conclusion, it will exulact the desired information.</p>
+</dev>
+
+<dev class="form">
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{input_objects.as_p}}
+    <input type="submit" value="Process"/>
+  </form>
+</dev>
+
+<dev class="result">
+  <!-- <p>{{detail_level}}</p>
+  <p>{{sentences_info}}</p> -->
+  {% if display_outputs %}
+    {% if detail_level == 'high' %}
+
+    {% for element in sentences_info %}
+         <ul>
+           <li>{{ element.0 }}</li>
+           <li>{{ element.1 }}</li>
+           <li>{{ element.2 }}</li>
+           <li>{{ element.3 }}</li>
+         </ul>
+     {% endfor %}
+
+    {% elif detail_level == 'low' %}
+    {% for element in sentences_info %}
+         <ul>
+           <li>{{ element.0 }}</li>
+           <li>{{ element.1 }}</li>
+           <li>{{ element.4 }}</li>
+           <li>{{ element.5 }}</li>
+           <li>{{ element.6 }}</li>
+         </ul>
+     {% endfor %}
+    {% elif detail_level == 'both' %}
+    {% for element in sentences_info %}
+         <ul>
+           <li>{{ element.0 }}</li>
+           <li>{{ element.1 }}</li>
+           <li>{{ element.2 }}</li>
+           <li>{{ element.3 }}</li>
+           <li>{{ element.4 }}</li>
+           <li>{{ element.5 }}</li>
+           <li>{{ element.6 }}</li>
+         </ul>
+     {% endfor %}
+    {% else %}
+      Do nothing
+    {% endif %}
+  {% endif %}
+
+</dev>
+
+{% endblock %}

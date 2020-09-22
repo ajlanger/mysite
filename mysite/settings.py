@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # Own apps
     'pages',
+    'dl_extractor',
 ]
 
 MIDDLEWARE = [

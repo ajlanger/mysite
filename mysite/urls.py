@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages import views as page_views
+from dl_extractor import views as dle_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', page_views.home_view, name='Home'),
     path('CV-html.html', page_views.cv_view, name='CV'),
+    path('dl_extractor.html', dle_views.dle_view, name='dle_app'),
 ]
