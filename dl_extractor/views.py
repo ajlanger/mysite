@@ -66,15 +66,23 @@ def dle_view(request, *args, **kwargs):
         original_sentences = [s[f'sentence {i+1}'] for i, s in enumerate(answer)]
 
         for s in answer:
-            if s['high'] != 'None':
+            if s['high'] != 'None' and s['high'] and type(s['high']) == dict:
                 high_info.extend([{'condition': make_string(s['high']['condition']),
                                    'consequence': make_string(s['high']['consequence'])}])
+            elif s['high'] == 'No conditional statements could be extracted in spite of a condition being present.':
+                high_info.extend([{'condition': 'Error during extraction',
+                                   'consequence': 'Error during extraction'}])
             else:
                high_info.extend([{'condition':'None', 'consequence': 'None'}])
-            if s['low'] != 'None':
+
+            if s['low'] != 'None' and type(s['high']) == dict:
                 low_info.extend([{'if': make_string(s['low']['if']),
                                   'then': make_string(s['low']['then']),
                                   'else': make_string(s['low']['else'])}])
+            elif s['low'] == 'error during extraction':
+                low_info.extend([{'if': 'Error during extraction',
+                                  'then': 'Error during extraction',
+                                  'else': 'Error during extraction'}])
             else:
                 low_info.extend([{'if':'None', 'then': 'None', 'else': 'None'}])
 
@@ -83,15 +91,8 @@ def dle_view(request, *args, **kwargs):
         consequences    = [s['consequence'] for s in high_info]
         if_statements   = [s['if'] for s in low_info]
         then_statements = [s['then'] for s in low_info]
-        else_statements = [s['else'] for s in low_info]
+        else_statements = [s['else'] if s['else'] else 'None' for s in low_info]
 
-        print('sentence_ids', sentence_ids)
-        print('original_sentences', original_sentences)
-        print('conditions', conditions)
-        print('consequences', consequences)
-        print('if_statements', if_statements)
-        print('then_statements', then_statements)
-        print('else_statements', else_statements)
 
         sentences_info = zip(sentence_ids, original_sentences, conditions, consequences, if_statements, then_statements, else_statements)
 
@@ -114,3 +115,9 @@ def dle_view(request, *args, **kwargs):
                    'sentences_info': []}
 
         return render(request, 'dl_extractor.html', context)
+
+
+# from official_extractor.decision_logic_extractor_functions import decision_logic_extractor
+# text = 'The day is Friday whenever I eat fries.'
+# decision_logic_extractor(text)
+# type(decision_logic_extractor(text)[0])

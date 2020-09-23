@@ -31,41 +31,67 @@
 }
 
 .SentenceID {
-  /* width: 10px; */
   float:left;
-  /* height:100px; */
   background:gray;
   margin:10px
 }
 
 .SentenceText {
-  /* width: 100px; */
   float:left;
-  /* height:100px; */
   background:gray;
   margin:10px
 }
 
 .HighLevel {
-  /* width: 100px; */
-  float:left;
-  /* height:100px; */
-  background:gray;
-  margin:10px
+  padding: auto;
+  float: left;
 }
 
 .Condition {
-  /* width: 150px; */
   float:left;
-  /* height:100px; */
-  background:gray;
-  margin:10px
+  margin:10px;
+  padding: auto;
+  text-align: center;
+  border-style: solid;
 }
 
 .Consequence {
-  /* width: 150px; */
   float:left;
-  /* height:100px; */
-  background:gray;
-  margin:10px
+  margin:10px;
+  padding: auto;
+  text-align: center;
+  border-style: solid;
+}
+
+.LowLevel {
+  padding: auto;
+  float: left;
+}
+
+.ifStatement {
+  float:left;
+  margin:10px;
+  padding: auto;
+  text-align: center;
+  border-style: solid;
+}
+
+.thenStatement {
+  float:left;
+  margin:10px;
+  padding: auto;
+  text-align: center;
+  border-style: solid;
+}
+
+.elseStatement {
+  float:left;
+  margin:10px;
+  padding: auto;
+  text-align: center;
+  border-style: solid;
+}
+
+.both {
+  flex-direction: column;
 }
