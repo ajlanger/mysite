@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'crypto_pp.css' %}"/>
+
+{{ x_axis|json_script:"xdates" }}
+{{ y_axis_prediction|json_script:"yprices" }}
+{{ y_axis_past_prices|json_script:"yprediction" }}
+
+<script>
+{% block jquery %}
+
+var y_past_prices_new = []
+var y_prediction_new  = [];
+
+const x_axis = JSON.parse(document.getElementById('xdates').textContent);
+const y_past_prices = JSON.parse(document.getElementById('yprices').textContent);
+const y_prediction = JSON.parse(document.getElementById('yprediction').textContent);
+
+// Correcting the y_past_prices
+for (index = 0; index < y_past_prices.length; index++) {
+  if (y_past_prices[index] == 'null') {
+    y_past_prices_new[index] = null;
+    }
+  else {
+      y_past_prices_new[index] = y_past_prices[index];
+    }
+}
+
+// Correcting the y_prediction
+for (index = 0; index < y_prediction.length; index++) {
+  if (y_prediction[index] == 'null') {
+    y_prediction_new[index] = null;
+    }
+  else {
+      y_prediction_new[index] = y_prediction[index];
+    }
+}
+
+// setChart()
+var speedCanvas = document.getElementById("myChart");
+
+var pastPrices = {
+    label: "Past price",
+    data: y_prediction_new,
+
+    // Point styling
+    pointStyle: 'circle',
+    pointRadius: 3,
+    pointHoverBackgroundColor: 5,
+
+    // Line styling
+    lineTension: 0.05,
+    fill: false,
+    borderColor: 'rgba(55, 55, 225, 0.4)'
+  };
+
+var prediction = {
+    label: "Prediction",
+    data: y_past_prices_new,
+
+    // Point styling
+    pointStyle: 'circle',
+    pointRadius: 10,
+    pointHoverBackgroundColor: 4,
+
+    // Line styling
+    lineTension: 0,
+    fill: false,
+    borderColor: 'rgba(14, 14, 102, 0.5)',
+    lineTension: 0
+  };
+
+var cryptoData = {
+  labels: x_axis,
+  datasets: [prediction, pastPrices]
+};
+
+var chartOptions = {
+  legend: {
+    display: false,
+    position: 'top',
+    labels: {
+    boxWidth: 80,
+    fontColor: 'black'
+    }
+  }
+};
+
+var lineChart = new Chart(speedCanvas, {
+  type: 'line',
+  data: cryptoData,
+  options: chartOptions
+});
+
+
+{% endblock %}
+</script>
+
+<!-- <p>{{ x_axis }} {{ y_axis_prediction }} {{ y_axis_past_prices }}</p> -->
+
+<div class="row_2">
+  <div class="inputBlock">
+  <h1 style="margin: 10px;">Crypto Price Predictor</h1>
+
+    <h2 style="margin: 20px;">Input</h2>
+
+    <div class="form">
+        <form action="" method="POST" style="margin: 30px; margin-right: 15px; display: block;">
+          {% csrf_token %}
+          {{input_objects.as_p}}
+          <input type="submit" value="Predict next price"/>
+        </form>
+    </div>
+
+  </div>
+
+  <div class="col-sm-12">
+
+    <h3>{{ coin_choice }} predicted price T+1: {{ prediction }} EUR</h3>
+    <canvas id="myChart" width="200" height="80"></canvas>
+
+  </div>
+
+  <div class="col-sm-12">
+
+    <h3>The prediction is made by a neural network</h3>
+
+    <p>The prediction is the result of training a Long Short-Term Memory network (LSTM) on past prices. To build the model, Keras was used. A couple of architectures were tried before deciding the final architecture. The prediction that you see on the screen is not always made by a model that was trained on the selected crypto. This is because sometimes those models acquired a below-average accuracy.</p>
+
+    <h3>Beware</h3>
+    <p>The prediction is not certain. Don't only use the prediction of the model to make a buy or sell decision. While training, the model's accuracy kept a steady value between 59% and 65%.</p>
+
+  </div>
+</div>
+
+{% endblock %}

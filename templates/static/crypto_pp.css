@@ -1,0 +1,25 @@
+.row_2 {
+  /* background-color: white; */
+}
+
+.inputBlock {
+  padding-bottom: 0px;
+  background-color: white;
+  margin-top: 10px;
+  padding: 10px;
+  /* box-shadow: -5px 5px 5px grey; */
+  /* float: left; */
+}
+
+.col-sm-12 {
+  padding: 10px;
+  padding-right: 30px;
+  background-color: white;
+  /* box-shadow: -5px 5px 5px grey; */
+  margin-top: 10px;
+}
+
+.mlimage {
+  float: left;
+  margin-left: 15px;
+}

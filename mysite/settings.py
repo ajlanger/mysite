@@ -45,10 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 
     # Own apps
     'pages',
     'dl_extractor',
+    'crypto_price_predictor',
 ]
 
 MIDDLEWARE = [
