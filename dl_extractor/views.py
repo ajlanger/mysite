@@ -115,9 +115,3 @@ def dle_view(request, *args, **kwargs):
                    'sentences_info': []}
 
         return render(request, 'dl_extractor.html', context)
-
-
-# from official_extractor.decision_logic_extractor_functions import decision_logic_extractor
-# text = 'The day is Friday whenever I eat fries.'
-# decision_logic_extractor(text)
-# type(decision_logic_extractor(text)[0])
