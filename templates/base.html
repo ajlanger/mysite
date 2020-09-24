@@ -4,6 +4,11 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Javascript code -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
   <title>Arnaud Langeraert</title>
   <style>
   html {
@@ -12,8 +17,6 @@
   </style>
 
 </head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
 
 <div id="container">
@@ -26,16 +29,24 @@
 
     <!-- Navigation bar -->
     <div class="navbar">
-      <a href="#">Crypto bot</a>
-      <a href="#">A* algorithm</a>
+      <a href="crypto_pp">Crypto price predictor</a>
       <a href="#">Questions/votes</a>
       <a href="/dl_extractor.html">Decision logic extractor</a>
     </div>
   </div>
 
   {% block content %}
+
   replace me
-  {% endblock %}
+
+  {% endblock content %}
+
+  {% include 'js.html' %}
+  <script>
+  $(document).ready(function(){
+    {% block jquery %}{% endblock %}
+  })
+  </script>
 
   <!-- Footer -->
   <div class="footer">
