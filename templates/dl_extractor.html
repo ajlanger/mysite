@@ -20,89 +20,100 @@
         {{input_objects.as_p}}
         <input type="submit" value="Process"/>
       </form>
+      <p>Number of detected rules : <b>{{rules_quantity}}</b></p>
   </div>
 
   <div class="result">
     <h1>Output</h1>
     {% if display_outputs %}
+    <!-- HIGH -->
       {% if detail_level == 'high' %}
       {% for element in sentences_info %}
-      <hr style="border: 2px solid;">
-      <b>Sentence {{ element.0 }} :</b> {{ element.1 }}
 
-      <div class="HighLevel">
-        <h3 style="background: gray; text-align: center;">High level</h3>
-        <div class="Condition">
-          <h4>Condition</h4>
-          {{ element.2 }}
-        </div>
+      <div class="single-output">
+        <hr style="border: 2px solid;">
+        <p><b>Sentence {{ element.0 }} :</b> {{ element.1 }}</p>
 
-        <div class="Consequence">
-          <h4>Consequence</h4>
-          {{ element.3 }}
+        <div class="HighLevel">
+          <h3 style="background: gray; text-align: center;">High level</h3>
+          <div class="Condition">
+            <h4>Condition</h4>
+            {{ element.2 }}
+          </div>
+
+          <div class="Consequence">
+            <h4>Consequence</h4>
+            {{ element.3 }}
+          </div>
         </div>
       </div>
 
        {% endfor %}
-
+     <!-- LOW -->
       {% elif detail_level == 'low' %}
       {% for element in sentences_info %}
-      <hr style="border: 2px solid;">
-      <b>Sentence {{ element.0 }} :</b> {{ element.1 }}
-      <div class="LowLevel">
-        <h3 style="background: gray; text-align: center;">Low level</h3>
-        <div class="ifStatement">
-          <h4>If statement</h4>
-          {{ element.4 }}
-        </div>
 
-        <div class="thenStatement">
-          <h4>Then statement</h4>
-          {{ element.5 }}
-        </div>
+      <div class="single-output">
+        <hr style="border: 2px solid;">
+        <p><b>Sentence {{ element.0 }} :</b> {{ element.1 }}</p>
+        <div class="LowLevel">
+          <h3 style="background: gray; text-align: center;">Low level</h3>
+          <div class="ifStatement">
+            <h4>If statement</h4>
+            {{ element.4 }}
+          </div>
 
-        <div class="elseStatement">
-          <h4>Else statement</h4>
-          {{ element.6 }}
-        </div>
+          <div class="thenStatement">
+            <h4>Then statement</h4>
+            {{ element.5 }}
+          </div>
+
+          <div class="elseStatement">
+            <h4>Else statement</h4>
+            {{ element.6 }}
+          </div>
+       </div>
      </div>
 
        {% endfor %}
+     <!-- BOTH -->
       {% elif detail_level == 'both' %}
         {% for element in sentences_info %}
+        <div class="single-output">
         <hr style="border: 2px solid;">
-        <b>Sentence {{ element.0 }} :</b> {{ element.1 }}
+        <p><b>Sentence {{ element.0 }} :</b> {{ element.1 }}</p>
 
-        <div class="both">
-          <div class="HighLevel">
-            <h3 style="background: gray;">High level</h3>
-            <div class="Condition">
-              <h4>Condition</h4>
-              {{ element.2 }}
+          <div class="both">
+            <div class="HighLevel">
+              <h3 style="background: gray;">High level</h3>
+              <div class="Condition">
+                <h4>Condition</h4>
+                {{ element.2 }}
+              </div>
+
+              <div class="Consequence">
+                <h4>Consequence</h4>
+                {{ element.3 }}
+              </div>
             </div>
 
-            <div class="Consequence">
-              <h4>Consequence</h4>
-              {{ element.3 }}
-            </div>
-          </div>
+            <div class="LowLevel">
+              <h3 style="background: gray;">Low level</h3>
+              <div class="ifStatement">
+                <h4>If statement</h4>
+                {{ element.4 }}
+              </div>
 
-          <div class="LowLevel">
-            <h3 style="background: gray;">Low level</h3>
-            <div class="ifStatement">
-              <h4>If statement</h4>
-              {{ element.4 }}
-            </div>
+              <div class="thenStatement">
+                <h4>Then statement</h4>
+                {{ element.5 }}
+              </div>
 
-            <div class="thenStatement">
-              <h4>Then statement</h4>
-              {{ element.5 }}
-            </div>
-
-            <div class="elseStatement">
-              <h4>Else statement</h4>
-                {{ element.6 }}
-            </div>
+              <div class="elseStatement">
+                <h4>Else statement</h4>
+                  {{ element.6 }}
+              </div>
+           </div>
          </div>
        </div>
        {% endfor %}
