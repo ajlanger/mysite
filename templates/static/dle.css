@@ -95,3 +95,10 @@
 .both {
   flex-direction: column;
 }
+
+.single-output {
+  float:left;
+  position: relative;
+  /* width: 250px; */
+  /* height: auto; */
+}
